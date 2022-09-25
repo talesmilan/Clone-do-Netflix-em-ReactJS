@@ -4,6 +4,13 @@ import './FeaturedMovie.css'
 export default ({item}) => {
     console.log(item)
 
+    console.log("Letras" + item.overview.length)
+    let textoCortado = 0
+
+    if (item.overview.length > 350) {
+        textoCortado = item.overview.length - 350
+    }
+
     let firstDate = new Date(item.first_air_date)
     let genres = []
     for (let i in item.genres) {
@@ -23,7 +30,7 @@ export default ({item}) => {
                         <div className="featured--points">Nota: {item.vote_average}</div>
                         <div className="featured--year">{firstDate.getFullYear()}</div>
                         <div className="featured--seasons">{item.number_of_seasons} {item.number_of_seasons !== 1 ? "temporadas" : "temporada"}</div>
-                        <div className="featured--description">{item.overview}</div>
+                        <div className="featured--description">{item.overview.length > 350 ? item.overview.substring(textoCortado, item.overview.length - 10).concat('...') : item.overview}</div>
                         <div className="featured--buttons">
                             <a className="featured--watchbutton" href={`/watch/${item.id}`}>Assistir</a>
                             <a className="featured--mylistbutton" href={`/list/add/${item.id}`}>+ Minha Lista</a>
