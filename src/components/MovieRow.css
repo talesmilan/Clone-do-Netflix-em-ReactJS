@@ -59,3 +59,11 @@
 .movieRow--list {
     transition: all ease 0.5s;
 }
+
+@media (max-width: 760px) {
+    .movieRow--left,
+    .movieRow--right {
+        opacity: 1;
+    }
+}
+
